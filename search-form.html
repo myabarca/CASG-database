@@ -94,14 +94,17 @@ $('#sortTable').DataTable({
 
 				
 			<label for="genus_search" class="mr-sm-2">Genus:</label>
-			<input type="text" name="genus_search" placeholder="Enter Genus Name" class="form-control mb-2 mr-sm-2" value="<?php echo isset($_POST['genus_search']) ? htmlspecialchars($_POST['genus_search'], ENT_QUOTES) : ''; ?>">
+			<input type="text" name="genus_search" placeholder="Enter Genus Name" class="form-control mb-2 mr-sm-2">
+<!-- 			      commenting out placeholder since php is used value="<?php echo isset($_POST['genus_search']) ? htmlspecialchars($_POST['genus_search'], ENT_QUOTES) : ''; ?>"> -->
 			
 
 			<label for="species_search" class="mr-sm-2">Species:</label>
-			<input type="text" name="species_search" placeholder="Enter Species Name" class="form-control mb-2 mr-sm-2" value="<?php echo isset($_POST['species_search']) ? htmlspecialchars($_POST['species_search'], ENT_QUOTES) : ''; ?>">
+			<input type="text" name="species_search" placeholder="Enter Species Name" class="form-control mb-2 mr-sm-2">
+<!-- 			       commenting out placeholder since php is used value="<?php echo isset($_POST['species_search']) ? htmlspecialchars($_POST['species_search'], ENT_QUOTES) : ''; ?>"> -->
 
 			<label for="taxon_search" class="mr-sm-2">Taxon:</label>
-			<input type="text" name="taxon_search" placeholder="Enter taxon, e.g. Mollusca" class="form-control mb-2 mr-sm-2" value="<?php echo isset($_POST['taxon_search']) ? htmlspecialchars($_POST['taxon_search'], ENT_QUOTES) : ''; ?>">
+			<input type="text" name="taxon_search" placeholder="Enter taxon, e.g. Mollusca" class="form-control mb-2 mr-sm-2">
+<!-- 			       commenting out placeholder since php is used value="<?php echo isset($_POST['taxon_search']) ? htmlspecialchars($_POST['taxon_search'], ENT_QUOTES) : ''; ?>"> -->
 
 
 <!-- end div container form group for taxonomy searches -->
@@ -114,19 +117,24 @@ $('#sortTable').DataTable({
 			<div class="form-inline">
 			
 			<label for="continent_search" class="mr-sm-2">Continent:</label>
-			<input type="text" name="continent_search" placeholder="Enter Continent" class="form-control mb-2 mr-sm-2" value="<?php echo isset($_POST['continent_search']) ? htmlspecialchars($_POST['continent_search'], ENT_QUOTES) : ''; ?>">
+			<input type="text" name="continent_search" placeholder="Enter Continent" class="form-control mb-2 mr-sm-2">
+<!-- 				value="<?php echo isset($_POST['continent_search']) ? htmlspecialchars($_POST['continent_search'], ENT_QUOTES) : ''; ?>"> -->
 
 			<label for="country_search" class="mr-sm-2">Country:</label>
-			<input type="text" name="country_search" placeholder="Enter Country" class="form-control mb-2 mr-sm-2" value="<?php echo isset($_POST['country_search']) ? htmlspecialchars($_POST['country_search'], ENT_QUOTES) : ''; ?>">
+			<input type="text" name="country_search" placeholder="Enter Country" class="form-control mb-2 mr-sm-2">
+<!-- 				value="<?php echo isset($_POST['country_search']) ? htmlspecialchars($_POST['country_search'], ENT_QUOTES) : ''; ?>"> -->
 
 			<label for="state_search" class="mr-sm-2">State/Province:</label>
-			<input type="text" name="state_search" placeholder="Enter State or Province" class="form-control mb-2 mr-sm-2" value="<?php echo isset($_POST['state_search']) ? htmlspecialchars($_POST['state_search'], ENT_QUOTES) : ''; ?>">
+			<input type="text" name="state_search" placeholder="Enter State or Province" class="form-control mb-2 mr-sm-2">
+<!-- 				value="<?php echo isset($_POST['state_search']) ? htmlspecialchars($_POST['state_search'], ENT_QUOTES) : ''; ?>"> -->
 
 			<label for="county_search" class="mr-sm-2">County:</label>
-			<input type="text" name="county_search" placeholder="Enter County" class="form-control mb-2 mr-sm-2" value="<?php echo isset($_POST['county_search']) ? htmlspecialchars($_POST['county_search'], ENT_QUOTES) : ''; ?>">
+			<input type="text" name="county_search" placeholder="Enter County" class="form-control mb-2 mr-sm-2">
+<!-- 				value="<?php echo isset($_POST['county_search']) ? htmlspecialchars($_POST['county_search'], ENT_QUOTES) : ''; ?>"> -->
 
 			<label for="era_search" class="mr-sm-2">Era:</label>
-			<input type="text" name="era_search" placeholder="Enter Era" class="form-control mb-2 mr-sm-2" value="<?php echo isset($_POST['era_search']) ? htmlspecialchars($_POST['era_search'], ENT_QUOTES) : ''; ?>">
+			<input type="text" name="era_search" placeholder="Enter Era" class="form-control mb-2 mr-sm-2">
+<!-- 				value="<?php echo isset($_POST['era_search']) ? htmlspecialchars($_POST['era_search'], ENT_QUOTES) : ''; ?>"> -->
 			</div>
 <!-- end div container form group for locality searches  -->
 </div>
@@ -137,13 +145,16 @@ $('#sortTable').DataTable({
 
 			<div class="form-inline">
 			<label for="locationID_search" class="mr-sm-2">Location ID:</label>
-			<input type="text" name="locationID_search" placeholder="Enter Location ID" class="form-control mb-2 mr-sm-2" value="<?php echo isset($_POST['locationID_search']) ? htmlspecialchars($_POST['locationID_search'], ENT_QUOTES) : ''; ?>">
+			<input type="text" name="locationID_search" placeholder="Enter Location ID" class="form-control mb-2 mr-sm-2">
+<!-- 				value="<?php echo isset($_POST['locationID_search']) ? htmlspecialchars($_POST['locationID_search'], ENT_QUOTES) : ''; ?>"> -->
 
 			<label for="lotID_search" class="mr-sm-2">Lot ID:</label>
-			<input type="text" name="lotID_search" placeholder="Enter Lot ID" class="form-control mb-2 mr-sm-2" value="<?php echo isset($_POST['lotID_search']) ? htmlspecialchars($_POST['lotID_search'], ENT_QUOTES) : ''; ?>">
+			<input type="text" name="lotID_search" placeholder="Enter Lot ID" class="form-control mb-2 mr-sm-2">
+<!-- 				value="<?php echo isset($_POST['lotID_search']) ? htmlspecialchars($_POST['lotID_search'], ENT_QUOTES) : ''; ?>"> -->
 
 			<label for="previousColln_search" class="mr-sm-2">Previous Collection:</label>
-			<input type="text" name="previousColln_search" placeholder="Enter Previous Collection" class="form-control mb-2 mr-sm-2" value="<?php echo isset($_POST['previousColln_search']) ? htmlspecialchars($_POST['previousColln_search'], ENT_QUOTES) : ''; ?>">
+			<input type="text" name="previousColln_search" placeholder="Enter Previous Collection" class="form-control mb-2 mr-sm-2">
+<!-- 				value="<?php echo isset($_POST['previousColln_search']) ? htmlspecialchars($_POST['previousColln_search'], ENT_QUOTES) : ''; ?>"> -->
 			</div>
 <!-- end div containter form group for locality searches  -->
 </div>
