@@ -1,11 +1,13 @@
 <?php
 include 'config/database.php';
 
-if (isset($_POST['search_button'])) { // means "if the search button is clicked, do what's in this if block"
+if (isset($_POST['search_button'])) { 
+        // means "if the search button is clicked, do what's in this if block"
         //echo "user entered the genus: " . $searched_genus;
 
         if 
-        (empty($_POST['genus_search']) && empty($_POST['species_search']) && empty($_POST['taxon_search']) && empty($_POST['continent_search']) && empty($_POST['country_search']) && empty($_POST['state_search']) && empty($_POST['county_search']) && empty($_POST['era_search']) && empty($_POST['locationID_search']) && empty($_POST['lotID_search']) && empty($_POST['previousColln_search'])) {
+            // note that empty(0) returns false, so empty won't work for fields where 0 is an acceptable value. php just thinks it's false aka null aka blank. so have to combine isset & < 0 to check for truly empty fields
+        (empty($_POST['genus_search']) && empty($_POST['species_search']) && empty($_POST['taxon_search']) && empty($_POST['continent_search']) && empty($_POST['country_search']) && empty($_POST['state_search']) && empty($_POST['county_search']) && empty($_POST['era_search']) && isset($_POST['locationID_search']) && $_POST['locationID_search'] < 0 && isset($_POST['lotID_search']) && $_POST['lotID_search'] < 0 && isset($_POST['previousColln_search']) && $_POST['previousColln_search'] < 0) {
 
                   echo 'Please enter data in fields above to search.' ;
         } else {
@@ -96,7 +98,8 @@ if (isset($_POST['search_button'])) { // means "if the search button is clicked,
     }
 
     if 
-        (!empty($_POST['locationID_search'])) {
+        //similarly as above, can't use empty() here because 0 is a valid value and doesn't mean null/false here
+        (isset($_POST['locationID_search']) && $_POST['locationID_search'] >= 0) {
         $searched_locationID = $_POST['locationID_search'];
 
         array_push($sql_arr, ' locality.locationID LIKE :entered_locationID');
@@ -104,7 +107,7 @@ if (isset($_POST['search_button'])) { // means "if the search button is clicked,
     }
 
     if 
-        (!empty($_POST['lot_search'])) {
+        (isset($_POST['lotID_search']) && $_POST['lotID_search'] >= 0) {
         $searched_lotID = $_POST['lotID_search'];
 
         array_push($sql_arr, ' lot.lotID LIKE :entered_lotID');
@@ -112,7 +115,7 @@ if (isset($_POST['search_button'])) { // means "if the search button is clicked,
     }
 
     if 
-        (!empty($_POST['previousColln_search'])) {
+        (isset($_POST['previousColln_search']) && $_POST['previousColln_search'] >= 0) {
         $searched_previousColln = $_POST['previousColln_search'];
 
         array_push($sql_arr, ' lot.previousCollection LIKE :entered_previousColln');
@@ -178,26 +181,27 @@ if (isset($_POST['search_button'])) { // means "if the search button is clicked,
         if (!empty($_POST['era_search'])) {
             $stmt->bindValue(':entered_era', '%'.$searched_era.'%', PDO::PARAM_STR);
         }
-
-        if (!empty($_POST['locationID_search'])) {
+            //similarly as above, can't use empty() here because 0 is a valid value and doesn't mean null/false here
+        if (isset($_POST['locationID_search']) && $_POST['locationID_search'] >= 0) {
             $stmt->bindValue(':entered_locationID', $searched_locationID, PDO::PARAM_STR);
         }
 
-        if (!empty($_POST['lotID_search'])) {
+        if (isset($_POST['lotID_search']) && $_POST['lotID_search'] >= 0) {
             $stmt->bindValue(':entered_lotID', '%'.$searched_lotID.'%', PDO::PARAM_STR);
         }
 
-        if (!empty($_POST['previousColln_search'])) {
+        if (isset($_POST['previousColln_search']) && $_POST['previousColln_search'] >= 0) {
             $stmt->bindValue(':entered_previousColln', '%'.$searched_previousColln.'%', PDO::PARAM_STR);
         }
               
-    
+    //print_r($stmt); echo "<br>";
+    //print_r($searched_previousColln); echo "<br>";
     
     $stmt->execute();
     
     $numrows=$stmt->rowCount();
 
-
+    // table column creation
     echo "<table class='table table-hover table-bordered' id='sortTable' >";
  
     //creating our table heading
@@ -223,7 +227,6 @@ if (isset($_POST['search_button'])) { // means "if the search button is clicked,
     // table body
     //loop through each post
     // this while loop was orginally right underneath stmt execute, but had to move it down to make way for table creation
-  
    
    
 
@@ -232,13 +235,18 @@ if (isset($_POST['search_button'])) { // means "if the search button is clicked,
        extract($row); // extract row
         // this will make $row['firstname'] to
         // just $firstname only
+        $lotID_url = "lotID_info.php?lotID=" . "{$lotID}";
+        $locationID_url = "locationID_info.php?locationID=" . "{$locationID}";
+        // the urls go here in the stmt fetch iteration because all of the links will be made in each iteration
+        //neat!
+
        	echo "<tr>"; // had added break here at beginning of each row, but don't need it anymore now that there's css and bootstrap formatting
         echo "<td>{$caseColln} </td>";
        	echo "<td>{$collnDrawerID} </td>";
-        echo "<td>{$lotID} </td>"; 
+        echo "<td>" . "<a href='".$lotID_url."'> {$lotID}  </a>" . "</td>"; 
         echo "<td>{$genus} </td>";
         echo "<td>{$species} </td>";
-        echo "<td>{$locationID} </td>";
+        echo "<td>" . "<a href='".$locationID_url."'> {$locationID}  </a>" . "</td>";
         echo "<td>{$country} </td>";
         echo "<td>{$stateProvince} </td>";
         echo "<td>{$county} </td>";
