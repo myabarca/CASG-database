@@ -28,7 +28,7 @@
 <!-- JS for sortable, searchable datatable; still need jquery libraries from above -->
 <script>
 $(document).ready(function() {
-$('#sortTable').DataTable({
+$('#loanTable').DataTable({
 			
         		dom: 'lBfrtip',
         		buttons: [
@@ -63,11 +63,11 @@ $('#sortTable').DataTable({
   	<!-- Links -->
   	<ul class="navbar-nav">
   		<li class="nav-item">
-      	<a class="navbar-brand" href="index.html">Back to Home</a>
+      	<a class="navbar-brand" href="index.php">Back to Home</a>
     	</li>
 
       	<li class="nav-item">
-      	<a class="nav-link" href="search-form.php">Lot Locality Search</a>
+      	<a class="nav-link" href="lot-loc-search-form.php">Lot Locality Search</a>
     	</li>
 
     	<li class="nav-item">
