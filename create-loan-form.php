@@ -23,7 +23,7 @@
         <!-- Links -->
         <ul class="navbar-nav">
             <li class="nav-item">
-            <a class="navbar-brand" href="index.html">Back to Home</a>
+            <a class="navbar-brand" href="index.php">Back to Home</a>
             </li>
 
             <li class="nav-item">
@@ -46,11 +46,12 @@
  
         <div class="page-header">
             <h1>Create Loan</h1>
+            <p><a href="loan-search-form.php">Click here to search and update an existing loan instead.</a></p>
         </div>
  
     
             <!-- html form here where the information will be entered -->
-        <form action="createLoan.php" method="post">
+        <form action="" method="post">
             <table class='table table-responsive'>
                 <tr>
                     <td>Person ID</td>
@@ -71,29 +72,24 @@
                 <tr>
                     <td>Date Sent</td>
                     <td><input type='date'name='dateSent_loan' class='form-control'></td>
-
-                    <td>Sent Via</td>
-                    <td><input type='text' name='sentBy_loan' class='form-control' /></td>
+                    <td>Processed By</td>
+                    <td><input type='text' name='processedBy_loan' class='form-control' /></td>
+                    
                 </tr>
                 <tr>
                     <td>Date Due</td>
                     <td><input type='date' name='dateDue_loan' class='form-control' /></td>
-
-                    <td>Processed By</td>
-                    <td><input type='text' name='processedBy_loan' class='form-control' /></td>
-                </tr>
-                <tr>
-                    <td>Date Closed</td>
-                    <td><input type='date' name='dateClosed_loan' class='form-control' /></td>
-
                     <td>Purpose</td>
                     <td><input type='text' name='purpose_loan' class='form-control' /></td>
+                    
                 </tr>
-        
                 <tr>
+                    <td>Sent Via</td>
+                    <td><input type='text' name='sentBy_loan' class='form-control' /></td>
                     <td>Notes</td>
-                    <td><input type='text' name='notes_loan' class='form-control' /></td>
-                </tr>
+                    <td><textarea type='text' name='notes_loan' class='form-control' rows="3"> </textarea></td>
+                </tr>      
+                                 
                 <tr>
                     <td></td>
                     <td>
@@ -104,6 +100,11 @@
         </form>
  
     </div> <!-- end .container -->
+
+    <br><br>
+
+    <?php include 'createLoan.php';
+    ?>
  
 
  

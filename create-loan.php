@@ -50,7 +50,7 @@
  
     
             <!-- html form here where the information will be entered -->
-        <form action="createLoan.php" method="post">
+        <form action="" method="post">
             <table class='table table-responsive'>
                 <tr>
                     <td>Person ID</td>
@@ -104,6 +104,11 @@
         </form>
  
     </div> <!-- end .container -->
+
+    <br><br>
+
+    <?php include 'createLoan.php';
+    ?>
  
 
  
